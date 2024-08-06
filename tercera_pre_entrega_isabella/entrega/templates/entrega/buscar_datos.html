@@ -1,3 +1,39 @@
 {% extends "entrega/base.html" %}
 
 {% block title %} Buscar datos {% endblock %}
+
+{% block main %}
+
+<form action= "{% url 'buscar_datos' %}" method="GET">
+{% csrf_token %}
+<p>Buscar en la base de datos</p>
+<p>Modelo: <input type="text" name="modelo"></p>
+
+<input type="submit" value="Buscar">
+
+</form>
+
+<h2>Resultados:</h2>
+
+<h3>Autos:</h3>
+{% for auto in autos %}
+    <p>{{ auto.modelo }}: {{ auto.matricula }}</p>
+{% empty %}
+    <p>No se encontraron autos.</p>
+{% endfor %}
+
+<h3>Camiones:</h3>
+{% for camion in camiones %}
+    <p>{{ camion.modelo }}: {{ camion.matricula }}</p>
+{% empty %}
+    <p>No se encontraron camiones.</p>
+{% endfor %}
+
+<h3>Motos:</h3>
+{% for moto in motos %}
+    <p>{{ moto.modelo }}: {{ moto.matricula }}</p>
+{% empty %}
+    <p>No se encontraron motos.</p>
+{% endfor %}
+
+{% endblock main %}

@@ -6,13 +6,15 @@
 
 {% block main %}
 
-<form action= "{% url 'ingresar_datos' %}" method="POST">
+<form action= "{% url 'form_ingresar_datos_autos' %}" method="POST">
 {% csrf_token %}
 <p>Autos</p>
 <p>Modelo: <input type="text" name="modelo"></p>
 <p>Matricula: <input type="text" name="matricula"></p>
 
 <input type="submit" value="Enviar">
+
+</form>
 
 <form action= "{% url 'form_ingresar_datos_camiones' %}" method="POST">
     {% csrf_token %}
@@ -22,20 +24,16 @@
     
     <input type="submit" value="Enviar">
     
-    </form>
-
-
-
 </form>
 
 <form action= "{% url 'form_ingresar_datos_motos' %}" method="POST">
-    {% csrf_token %}
-    <p>Motos</p>
-    <p>Modelo: <input type="text" name="modelo"></p>
-    <p>Matricula: <input type="text" name="matricula"></p>
-    
-    <input type="submit" value="Enviar">
-    
-    </form>
-    
+{% csrf_token %}
+<p>Motos</p>
+<p>Modelo: <input type="text" name="modelo"></p>
+<p>Matricula: <input type="text" name="matricula"></p>
+
+<input type="submit" value="Enviar">
+
+</form>
+
 {% endblock main %}
