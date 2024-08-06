@@ -1,3 +1,41 @@
 {% extends "entrega/base.html" %}
 
+{% load static %}
+
 {% block title %} Ingresar datos {% endblock %}
+
+{% block main %}
+
+<form action= "{% url 'ingresar_datos' %}" method="POST">
+{% csrf_token %}
+<p>Autos</p>
+<p>Modelo: <input type="text" name="modelo"></p>
+<p>Matricula: <input type="text" name="matricula"></p>
+
+<input type="submit" value="Enviar">
+
+<form action= "{% url 'form_ingresar_datos_camiones' %}" method="POST">
+    {% csrf_token %}
+    <p>Camiones</p>
+    <p>Modelo: <input type="text" name="modelo"></p>
+    <p>Matricula: <input type="text" name="matricula"></p>
+    
+    <input type="submit" value="Enviar">
+    
+    </form>
+
+
+
+</form>
+
+<form action= "{% url 'form_ingresar_datos_motos' %}" method="POST">
+    {% csrf_token %}
+    <p>Motos</p>
+    <p>Modelo: <input type="text" name="modelo"></p>
+    <p>Matricula: <input type="text" name="matricula"></p>
+    
+    <input type="submit" value="Enviar">
+    
+    </form>
+    
+{% endblock main %}
