@@ -38,7 +38,14 @@ def form_ingresar_datos_motos(request):
 def buscar_datos(request):
     query_modelo = request.GET.get('modelo', '')
     query_matricula = request.GET.get('matricula', '')
-    resultados_autos = Autos.objects.filter(modelo__icontains=query_modelo, matricula__icontains=query_matricula)
-    resultados_camiones = Camiones.objects.filter(modelo__icontains=query_modelo, matricula__icontains=query_matricula)
-    resultados_motos = Motos.objects.filter(modelo__icontains=query_modelo, matricula__icontains=query_matricula)
+    
+    if query_matricula.isdigit():
+        resultados_autos = Autos.objects.filter(modelo__icontains=query_modelo, matricula=query_matricula)
+        resultados_camiones = Camiones.objects.filter(modelo__icontains=query_modelo, matricula=query_matricula)
+        resultados_motos = Motos.objects.filter(modelo__icontains=query_modelo, matricula=query_matricula)
+    else:
+        resultados_autos = Autos.objects.filter(modelo__icontains=query_modelo)
+        resultados_camiones = Camiones.objects.filter(modelo__icontains=query_modelo)
+        resultados_motos = Motos.objects.filter(modelo__icontains=query_modelo)
+
     return render(request, "entrega/buscar_datos.html", {'resultados_autos': resultados_autos, 'resultados_camiones': resultados_camiones, 'resultados_motos': resultados_motos})

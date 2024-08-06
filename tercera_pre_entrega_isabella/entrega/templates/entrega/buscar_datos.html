@@ -17,18 +17,25 @@
 <h2>Resultados:</h2>
 
 <h3>Autos:</h3>
-{% for auto in autos %}
+{% for auto in resultados_autos %}
     <p>Modelo: {{ auto.modelo }}, Matricula: {{ auto.matricula }}</p>
 {% empty %}
     <p>No se encontraron autos.</p>
 {% endfor %}
 
 <h3>Camiones:</h3>
-{% for camion in camiones %}
+{% for camion in resultados_camiones %}
     <p>Modelo: {{ camion.modelo }}, Matricula: {{ camion.matricula }}</p>
-    {% empty %}
-        <p>No se encontraron camiones.</p>
-    {% endfor %}
+{% empty %}
+    <p>No se encontraron camiones.</p>
+{% endfor %}
+
+<h3>Motos:</h3>
+{% for moto in resultados_motos %}
+    <p>Modelo: {{ moto.modelo }}, Matricula: {{ moto.matricula }}</p>
+{% empty %}
+    <p>No se encontraron motos.</p>
+{% endfor %}
     
     <h3>Motos:</h3>
     {% for moto in motos %}
