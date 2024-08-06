@@ -1,3 +1,5 @@
+Por favor clonar y descargar el repositorio
+
 Instrucciones para el uso de la aplicación
 Acceso a la aplicación
 Para acceder a la aplicación, ir a la siguiente dirección: http://127.0.0.1:8000/entrega/
