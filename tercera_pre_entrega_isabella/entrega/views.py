@@ -10,4 +10,4 @@ def ingresar_datos(request):
     return render(request,"entrega/ingresar_datos.html")
 
 def buscar_datos(request):
-    return render("entrega/buscar_datos")
+    return render(request, "entrega/buscar_datos.html")
