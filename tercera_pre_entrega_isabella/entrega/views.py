@@ -10,6 +10,9 @@ def inicio(request):
 def ingresar_datos(request):
     return render(request,"entrega/ingresar_datos.html")
 
+def bd_vehiculos(request):
+    return render(request,"entrega/bd_vehiculos.html")
+
 def form_ingresar_datos_autos(request):
 
     if request.method == 'POST':
