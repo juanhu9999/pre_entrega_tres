@@ -13,6 +13,9 @@ def ingresar_datos(request):
 def bd_vehiculos(request):
     return render(request,"entrega/bd_vehiculos.html")
 
+def aboutme(request):
+    return render(request,"entrega/aboutme.html")
+
 def form_ingresar_datos_autos(request):
 
     if request.method == 'POST':
