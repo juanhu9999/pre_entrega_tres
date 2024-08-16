@@ -1,4 +1,5 @@
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from .models import Autos, Camiones, Motos
 
@@ -101,5 +102,23 @@ class BorrarMotosView(DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return HttpResponseRedirect(self.get_success_url())
+    
+class ActualizarAutosView(UpdateView):
+    model = Autos
+    template_name = "entrega/actualizar_autos.html"
+    fields = ['modelo', 'matricula']
+    success_url = reverse_lazy('buscar_datos')
+
+class ActualizarCamionesView(UpdateView):
+    model = Camiones
+    template_name = "entrega/actualizar_camiones.html"
+    fields = ['modelo', 'matricula']
+    success_url = reverse_lazy('buscar_datos')
+
+class ActualizarMotosView(UpdateView):
+    model = Motos
+    template_name = "entrega/actualizar_motos.html"
+    fields = ['modelo', 'matricula']
+    success_url = reverse_lazy('buscar_datos')
 
 

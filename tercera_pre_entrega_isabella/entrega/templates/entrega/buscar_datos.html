@@ -1,25 +1,28 @@
 {% extends "entrega/base.html" %}
 
-{% block title %} Buscar/Borrar datos {% endblock %}
+{% block title %} Buscar/Borrar o actulizar datos {% endblock %}
 
 {% block main %}
 
-<form action= "{% url 'buscar_datos' %}" method="GET">
+<form action="{% url 'buscar_datos' %}" method="GET">
     {% csrf_token %}
-    <p>Buscar en la base de datos</p>
-    <p>Modelo: <input type="text" name="modelo"></p>
-    <p>Matricula: <input type="text" name="matricula"></p>
-    
+    <label for="modelo">Modelo:</label>
+    <input type="text" id="modelo" name="modelo">
+    <label for="matricula">Matricula:</label>
+    <input type="text" id="matricula" name="matricula">
     <input type="submit" value="Buscar">
-    
-    </form>
+</form>
 
-    <h3>Autos:</h3>
+<h3>Autos:</h3>
 {% for auto in resultados_autos %}
     <p>Modelo: {{ auto.modelo }}, Matricula: {{ auto.matricula }}</p>
     <form action="{% url 'borrar_autos' auto.pk %}" method="POST">
         {% csrf_token %}
         <input type="submit" value="Borrar">
+    </form>
+    <form action="{% url 'actualizar_autos' auto.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Actualizar">
     </form>
 {% empty %}
     <p>No se encontraron autos.</p>
@@ -32,6 +35,10 @@
         {% csrf_token %}
         <input type="submit" value="Borrar">
     </form>
+    <form action="{% url 'actualizar_camiones' camion.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Actualizar">
+    </form>
 {% empty %}
     <p>No se encontraron camiones.</p>
 {% endfor %}
@@ -42,6 +49,10 @@
     <form action="{% url 'borrar_motos' moto.pk %}" method="POST">
         {% csrf_token %}
         <input type="submit" value="Borrar">
+    </form>
+    <form action="{% url 'actualizar_motos' moto.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Actualizar">
     </form>
 {% empty %}
     <p>No se encontraron motos.</p>
