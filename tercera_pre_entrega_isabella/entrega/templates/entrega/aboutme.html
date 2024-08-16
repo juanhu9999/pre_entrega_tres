@@ -1,7 +1,13 @@
 {% extends "entrega/base.html" %}
 
+{% load static %}
+
 {% block title %} About me {% endblock %}
 
 {% block main %}
-
+    <div style="display: flex; align-items: center;">
+        <h1>Juan Isabella</h1>
+        <img src="{% static 'entrega/ProfilePic.jpg' %}" alt="Profile Picture" style="height: 100px; margin-left: 20px;">
+    </div>
+    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae.</h2>
 {% endblock main %}
