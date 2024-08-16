@@ -15,6 +15,18 @@ class IngresarDatosView(CreateView):
 class BuscarDatosView(TemplateView):
     template_name = "entrega/buscar_datos.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        modelo = self.request.GET.get('modelo')
+        matricula = self.request.GET.get('matricula')
+
+        if modelo or matricula:
+            context['resultados_autos'] = Autos.objects.filter(modelo__icontains=modelo, matricula__icontains=matricula)
+            context['resultados_camiones'] = Camiones.objects.filter(modelo__icontains=modelo, matricula__icontains=matricula)
+            context['resultados_motos'] = Motos.objects.filter(modelo__icontains=modelo, matricula__icontains=matricula)
+
+        return context
+
 class BDVehiculosView(TemplateView):
     template_name = "entrega/bd_vehiculos.html"
 
