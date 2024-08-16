@@ -1,6 +1,6 @@
 {% extends "entrega/base.html" %}
 
-{% block title %} Buscar datos {% endblock %}
+{% block title %} Buscar/Borrar datos {% endblock %}
 
 {% block main %}
 
@@ -13,6 +13,39 @@
     <input type="submit" value="Buscar">
     
     </form>
+
+    <h3>Autos:</h3>
+{% for auto in resultados_autos %}
+    <p>Modelo: {{ auto.modelo }}, Matricula: {{ auto.matricula }}</p>
+    <form action="{% url 'borrar_autos' auto.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Borrar">
+    </form>
+{% empty %}
+    <p>No se encontraron autos.</p>
+{% endfor %}
+
+<h3>Camiones:</h3>
+{% for camion in resultados_camiones %}
+    <p>Modelo: {{ camion.modelo }}, Matricula: {{ camion.matricula }}</p>
+    <form action="{% url 'borrar_camiones' camion.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Borrar">
+    </form>
+{% empty %}
+    <p>No se encontraron camiones.</p>
+{% endfor %}
+
+<h3>Motos:</h3>
+{% for moto in resultados_motos %}
+    <p>Modelo: {{ moto.modelo }}, Matricula: {{ moto.matricula }}</p>
+    <form action="{% url 'borrar_motos' moto.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Borrar">
+    </form>
+{% empty %}
+    <p>No se encontraron motos.</p>
+{% endfor %}
 
 <h2>Resultados:</h2>
 

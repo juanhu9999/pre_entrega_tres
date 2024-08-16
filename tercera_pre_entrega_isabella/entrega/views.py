@@ -53,6 +53,11 @@ class BorrarAutosView(DeleteView):
     template_name = "entrega/borrar.html"
     success_url = reverse_lazy('resultados')
 
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.delete()
+        return HttpResponseRedirect(self.get_success_url())
+
 class CrearCamionesView(CreateView):
     model = Camiones
     template_name = "entrega/crear_camiones.html"
@@ -70,6 +75,11 @@ class BorrarCamionesView(DeleteView):
     template_name = "entrega/borrar.html"
     success_url = reverse_lazy('resultados')
 
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.delete()
+        return HttpResponseRedirect(self.get_success_url())
+
 class CrearMotosView(CreateView):
     model = Motos
     template_name = "entrega/crear_motos.html"
@@ -86,5 +96,10 @@ class BorrarMotosView(DeleteView):
     model = Motos
     template_name = "entrega/borrar.html"
     success_url = reverse_lazy('resultados')
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.delete()
+        return HttpResponseRedirect(self.get_success_url())
 
 
