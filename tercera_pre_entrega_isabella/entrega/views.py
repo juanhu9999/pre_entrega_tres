@@ -1,17 +1,31 @@
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from .models import Autos, Camiones, Motos
+from django.contrib.auth.models import User
+from django.views import generic
+
+@method_decorator(staff_member_required, name='dispatch')
+class IngresarDatosView(TemplateView):
+    template_name = "entrega/ingresar_datos.html"
 
 # Create your views here.
 
+class SignUp(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'entrega/signup.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['login_form'] = AuthenticationForm()
+        return context
+
 class InicioView(TemplateView):
     template_name = "entrega/inicio.html"
-
-class IngresarDatosView(CreateView):
-    model = Autos
-    template_name = "entrega/ingresar_datos.html"
-    fields = ['modelo', 'matricula']
 
 class BuscarDatosView(TemplateView):
     template_name = "entrega/buscar_datos.html"

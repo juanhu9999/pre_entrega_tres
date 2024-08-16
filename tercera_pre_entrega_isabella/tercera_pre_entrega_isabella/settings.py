@@ -55,7 +55,7 @@ ROOT_URLCONF = 'tercera_pre_entrega_isabella.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'entrega/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
