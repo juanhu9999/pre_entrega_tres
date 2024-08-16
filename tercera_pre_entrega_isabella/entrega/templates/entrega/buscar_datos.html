@@ -15,14 +15,16 @@
 <h3>Autos:</h3>
 {% for auto in resultados_autos %}
     <p>Modelo: {{ auto.modelo }}, Matricula: {{ auto.matricula }}</p>
-    <form action="{% url 'borrar_autos' auto.pk %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Borrar">
-    </form>
-    <form action="{% url 'actualizar_autos' auto.pk %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Actualizar">
-    </form>
+    {% if user.is_staff %}
+        <form action="{% url 'borrar_autos' auto.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Borrar">
+        </form>
+        <form action="{% url 'actualizar_autos' auto.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Actualizar">
+        </form>
+    {% endif %}
 {% empty %}
     <p>No se encontraron autos.</p>
 {% endfor %}
@@ -30,14 +32,16 @@
 <h3>Camiones:</h3>
 {% for camion in resultados_camiones %}
     <p>Modelo: {{ camion.modelo }}, Matricula: {{ camion.matricula }}</p>
-    <form action="{% url 'borrar_camiones' camion.pk %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Borrar">
-    </form>
-    <form action="{% url 'actualizar_camiones' camion.pk %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Actualizar">
-    </form>
+    {% if user.is_staff %}
+        <form action="{% url 'borrar_camiones' camion.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Borrar">
+        </form>
+        <form action="{% url 'actualizar_camiones' camion.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Actualizar">
+        </form>
+    {% endif %}
 {% empty %}
     <p>No se encontraron camiones.</p>
 {% endfor %}
@@ -45,14 +49,16 @@
 <h3>Motos:</h3>
 {% for moto in resultados_motos %}
     <p>Modelo: {{ moto.modelo }}, Matricula: {{ moto.matricula }}</p>
-    <form action="{% url 'borrar_motos' moto.pk %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Borrar">
-    </form>
-    <form action="{% url 'actualizar_motos' moto.pk %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Actualizar">
-    </form>
+    {% if user.is_staff %}
+        <form action="{% url 'borrar_motos' moto.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Borrar">
+        </form>
+        <form action="{% url 'actualizar_motos' moto.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Actualizar">
+        </form>
+    {% endif %}
 {% empty %}
     <p>No se encontraron motos.</p>
 {% endfor %}
