@@ -25,6 +25,6 @@ urlpatterns = [
     path('actualizar/motos/<int:pk>/', ActualizarMotosView.as_view(), name="actualizar_motos"),
     path('borrar/motos/<int:pk>/', BorrarMotosView.as_view(), name="borrar_motos"),
     path('resultados/', ResultadosView.as_view(), name='resultados'),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='entrega/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
