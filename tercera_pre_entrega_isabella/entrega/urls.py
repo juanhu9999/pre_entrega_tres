@@ -7,6 +7,7 @@ from .views import (
     ResultadosView, SignUp,
 )
 from django.contrib.auth import views as auth_views
+from .views_auth import LogoutView
 
 urlpatterns = [
     path('', InicioView.as_view(), name="inicio"),
@@ -26,5 +27,5 @@ urlpatterns = [
     path('borrar/motos/<int:pk>/', BorrarMotosView.as_view(), name="borrar_motos"),
     path('resultados/', ResultadosView.as_view(), name='resultados'),
     path('login/', auth_views.LoginView.as_view(template_name='entrega/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]

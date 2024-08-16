@@ -6,7 +6,17 @@ from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from .models import Autos, Camiones, Motos
 from django.contrib.auth.models import User
-from django.views import generic
+from django.views import generic, View
+from django.contrib.auth import logout
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return HttpResponseRedirect(reverse_lazy('inicio'))
+
+    def post(self, request):
+        logout(request)
+        return HttpResponseRedirect(reverse_lazy('inicio'))
 
 @method_decorator(staff_member_required, name='dispatch')
 class IngresarDatosView(TemplateView):

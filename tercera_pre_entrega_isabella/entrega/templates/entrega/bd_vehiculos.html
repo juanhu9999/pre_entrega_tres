@@ -8,6 +8,10 @@
 <h2>Autos</h2>
 {% for auto in autos %}
     <p>Modelo: {{ auto.modelo }}, Matricula: {{ auto.matricula }}</p>
+    {% if user.is_staff %}
+        <a href="{% url 'actualizar_autos' auto.pk %}">Actualizar</a>
+        <a href="{% url 'borrar_autos' auto.pk %}">Borrar</a>
+    {% endif %}
 {% empty %}
     <p>No se encontraron autos.</p>
 {% endfor %}
@@ -15,6 +19,10 @@
 <h2>Camiones</h2>
 {% for camion in camiones %}
     <p>Modelo: {{ camion.modelo }}, Matricula: {{ camion.matricula }}</p>
+    {% if user.is_staff %}
+        <a href="{% url 'actualizar_camiones' camion.pk %}">Actualizar</a>
+        <a href="{% url 'borrar_camiones' camion.pk %}">Borrar</a>
+    {% endif %}
 {% empty %}
     <p>No se encontraron camiones.</p>
 {% endfor %}
@@ -22,6 +30,10 @@
 <h2>Motos</h2>
 {% for moto in motos %}
     <p>Modelo: {{ moto.modelo }}, Matricula: {{ moto.matricula }}</p>
+    {% if user.is_staff %}
+        <a href="{% url 'actualizar_motos' moto.pk %}">Actualizar</a>
+        <a href="{% url 'borrar_motos' moto.pk %}">Borrar</a>
+    {% endif %}
 {% empty %}
     <p>No se encontraron motos.</p>
 {% endfor %}
