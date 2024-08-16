@@ -26,7 +26,12 @@
                 <a class="navbar-brand" href="{% url 'ingresar_datos' %}">Ingresar datos</a>
                 <a class="navbar-brand" href="{% url 'buscar_datos' %}">Buscar/Borrar o actualizar datos</a>
                 <a class="navbar-brand" href="{% url 'aboutme' %}">About me</a>
-                <a class="btn btn-primary" href="{% url 'signup' %}">Sign Up</a>
+                {% if user.is_authenticated %}
+                    <span>Bienvenido, {{ user.username }}</span>
+                    <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a class="btn btn-primary" href="{% url 'signup' %}">Sign Up</a>
+                {% endif %}
             </div>
         </nav>
         <!-- Masthead-->
