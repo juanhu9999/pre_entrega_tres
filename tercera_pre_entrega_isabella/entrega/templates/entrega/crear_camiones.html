@@ -1,0 +1,11 @@
+{% extends "entrega/base.html" %}
+
+{% block title %} Crear Camiones {% endblock %}
+
+{% block main %}
+<form action="{% url 'crear_camiones' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Crear">
+</form>
+{% endblock main %}

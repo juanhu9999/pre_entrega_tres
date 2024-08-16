@@ -4,6 +4,7 @@ from .views import (
     CrearAutosView, ActualizarAutosView, BorrarAutosView,
     CrearCamionesView, ActualizarCamionesView, BorrarCamionesView,
     CrearMotosView, ActualizarMotosView, BorrarMotosView,
+    ResultadosView,
 )
 
 urlpatterns = [
@@ -18,7 +19,8 @@ urlpatterns = [
     path('crear/camiones/', CrearCamionesView.as_view(), name="crear_camiones"),
     path('actualizar/camiones/<int:pk>/', ActualizarCamionesView.as_view(), name="actualizar_camiones"),
     path('borrar/camiones/<int:pk>/', BorrarCamionesView.as_view(), name="borrar_camiones"),
-    path('crear/motos/', CrearMotosView.as_view(), name="crear_motos"),  # línea añadida
+    path('crear/motos/', CrearMotosView.as_view(), name="crear_motos"),
     path('actualizar/motos/<int:pk>/', ActualizarMotosView.as_view(), name="actualizar_motos"),
     path('borrar/motos/<int:pk>/', BorrarMotosView.as_view(), name="borrar_motos"),
+    path('resultados/', ResultadosView.as_view(), name='resultados'),
 ]

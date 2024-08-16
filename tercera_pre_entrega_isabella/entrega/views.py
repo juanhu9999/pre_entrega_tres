@@ -18,12 +18,15 @@ class BuscarDatosView(TemplateView):
 class BDVehiculosView(TemplateView):
     template_name = "entrega/bd_vehiculos.html"
 
+class ResultadosView(TemplateView):
+    template_name = "entrega/resultados.html"
+
 class AboutMeView(TemplateView):
     template_name = "entrega/aboutme.html"
 
 class CrearAutosView(CreateView):
     model = Autos
-    template_name = "entrega/crear.html"
+    template_name = "entrega/crear_autos.html"
     success_url = reverse_lazy('resultados')
     fields = ['modelo', 'matricula']
 
@@ -40,7 +43,7 @@ class BorrarAutosView(DeleteView):
 
 class CrearCamionesView(CreateView):
     model = Camiones
-    template_name = "entrega/crear.html"
+    template_name = "entrega/crear_camiones.html"
     success_url = reverse_lazy('resultados')
     fields = ['modelo', 'matricula']
 
@@ -57,7 +60,7 @@ class BorrarCamionesView(DeleteView):
 
 class CrearMotosView(CreateView):
     model = Motos
-    template_name = "entrega/crear.html"
+    template_name = "entrega/crear_motos.html"
     success_url = reverse_lazy('resultados')
     fields = ['modelo', 'matricula']
 
