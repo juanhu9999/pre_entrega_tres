@@ -121,4 +121,14 @@ class ActualizarMotosView(UpdateView):
     fields = ['modelo', 'matricula']
     success_url = reverse_lazy('buscar_datos')
 
+class BDVehiculosView(TemplateView):
+    template_name = "entrega/bd_vehiculos.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['autos'] = Autos.objects.all()
+        context['camiones'] = Camiones.objects.all()
+        context['motos'] = Motos.objects.all()
+        return context
+
 
