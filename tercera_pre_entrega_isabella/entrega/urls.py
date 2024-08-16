@@ -1,16 +1,22 @@
 from django.urls import path
-from entrega.views import inicio, ingresar_datos, buscar_datos, form_ingresar_datos_autos, form_ingresar_datos_camiones, form_ingresar_datos_motos
-
-from django.urls import path
-from entrega.views import inicio, ingresar_datos, buscar_datos, form_ingresar_datos_autos, form_ingresar_datos_camiones, form_ingresar_datos_motos, bd_vehiculos, aboutme
+from .views import (
+    InicioView, BDVehiculosView, AboutMeView, IngresarDatosView, BuscarDatosView,
+    CrearAutosView, ActualizarAutosView, BorrarAutosView,
+    CrearCamionesView, ActualizarCamionesView, BorrarCamionesView,
+    CrearMotosView, ActualizarMotosView, BorrarMotosView,
+)
 
 urlpatterns = [
-    path('', inicio, name="inicio"),
-    path('ingresar_datos', ingresar_datos, name="ingresar_datos"),
-    path('buscar_datos', buscar_datos, name="buscar_datos"),
-    path('bd_vehiculos', bd_vehiculos, name="bd_vehiculos"),
-    path('aboutme', aboutme, name="aboutme"),
-    path('form_ingresar_datos_autos', form_ingresar_datos_autos, name="form_ingresar_datos_autos"),
-    path('form_ingresar_datos_camiones', form_ingresar_datos_camiones, name="form_ingresar_datos_camiones"),
-    path('form_ingresar_datos_motos', form_ingresar_datos_motos, name="form_ingresar_datos_motos"),
+    path('', InicioView.as_view(), name="inicio"),
+    path('bd_vehiculos', BDVehiculosView.as_view(), name="bd_vehiculos"),
+    path('aboutme', AboutMeView.as_view(), name="aboutme"),
+    path('ingresar_datos/', IngresarDatosView.as_view(), name='ingresar_datos'),
+    path('buscar_datos/', BuscarDatosView.as_view(), name='buscar_datos'),
+    path('crear/autos/<pk>/', CrearAutosView.as_view(), name="crear_autos"),
+    path('actualizar/autos/<int:pk>/', ActualizarAutosView.as_view(), name="actualizar_autos"),
+    path('borrar/autos/<int:pk>/', BorrarAutosView.as_view(), name="borrar_autos"),
+    path('actualizar/camiones/<int:pk>/', ActualizarCamionesView.as_view(), name="actualizar_camiones"),
+    path('borrar/camiones/<int:pk>/', BorrarCamionesView.as_view(), name="borrar_camiones"),
+    path('actualizar/motos/<int:pk>/', ActualizarMotosView.as_view(), name="actualizar_motos"),
+    path('borrar/motos/<int:pk>/', BorrarMotosView.as_view(), name="borrar_motos"),
 ]
