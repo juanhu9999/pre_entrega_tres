@@ -1,0 +1,14 @@
+{% extends "entrega/base.html" %}
+
+{% block title %} Actualizar Autos {% endblock %}
+
+{% block main %}
+<form action="{% url 'actualizar_autos' auto.pk %}" method="POST">
+    {% csrf_token %}
+    <label for="modelo">Modelo:</label><br>
+    <input type="text" id="modelo" name="modelo" value="{{ auto.modelo }}"><br>
+    <label for="matricula">Matricula:</label><br>
+    <input type="text" id="matricula" name="matricula" value="{{ auto.matricula }}"><br>
+    <input type="submit" value="Actualizar">
+</form>
+{% endblock main %}

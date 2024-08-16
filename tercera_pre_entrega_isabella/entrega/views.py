@@ -109,17 +109,32 @@ class ActualizarAutosView(UpdateView):
     fields = ['modelo', 'matricula']
     success_url = reverse_lazy('buscar_datos')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['auto'] = self.get_object()
+        return context
+
 class ActualizarCamionesView(UpdateView):
     model = Camiones
     template_name = "entrega/actualizar_camiones.html"
     fields = ['modelo', 'matricula']
     success_url = reverse_lazy('buscar_datos')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['camion'] = self.get_object()
+        return context
+
 class ActualizarMotosView(UpdateView):
     model = Motos
     template_name = "entrega/actualizar_motos.html"
     fields = ['modelo', 'matricula']
     success_url = reverse_lazy('buscar_datos')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['moto'] = self.get_object()
+        return context
 
 class BDVehiculosView(TemplateView):
     template_name = "entrega/bd_vehiculos.html"
