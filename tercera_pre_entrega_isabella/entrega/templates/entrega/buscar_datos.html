@@ -5,7 +5,6 @@
 {% block main %}
 
 <form action="{% url 'buscar_datos' %}" method="GET">
-    {% csrf_token %}
     <label for="modelo">Modelo:</label>
     <input type="text" id="modelo" name="modelo">
     <label for="matricula">Matricula:</label>
@@ -58,4 +57,4 @@
     <p>No se encontraron motos.</p>
 {% endfor %}
     
-    {% endblock main %}
+{% endblock main %}

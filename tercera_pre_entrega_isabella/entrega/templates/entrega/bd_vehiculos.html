@@ -1,8 +1,10 @@
 {% extends "entrega/base.html" %}
 
-{% block title %} Vehiculos {% endblock %}
+{% block title %} Base de datos de autos camione y motos {% endblock %}
 
 {% block main %}
+<h2>Consulte la base de datos de los vehiculos</h2>
+
 <h2>Autos</h2>
 {% for auto in autos %}
     <p>Modelo: {{ auto.modelo }}, Matricula: {{ auto.matricula }}</p>
@@ -24,3 +26,8 @@
     <p>No se encontraron motos.</p>
 {% endfor %}
 {% endblock main %}
+
+{% block footer %}
+<p>Autor: Juan Isabella</p>
+<p>Fecha: Agosto 2024</p>
+{% endblock %}

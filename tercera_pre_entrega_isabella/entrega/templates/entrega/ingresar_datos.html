@@ -1,10 +1,9 @@
 {% extends "entrega/base.html" %}
+{% block title %} Ingresa los datos de los vehiculos {% endblock %}
+{% block main %}
+<h2>Aquí puede crear e ingresar nuevos vehiculos</h2>
 
 {% load static %}
-
-{% block title %} Ingresar datos {% endblock %}
-
-{% block main %}
 
 <form action="{% url 'crear_autos' %}" method="POST">
     {% csrf_token %}
@@ -20,5 +19,8 @@
     {% csrf_token %}
     <input type="submit" value="Crear Motos">
 </form>
-
-{% endblock main %}
+{% endblock %}
+{% block footer %}
+<p>Autor: Juan Isabella</p>
+<p>Fecha: Agosto 2024</p>
+{% endblock %}
