@@ -8,7 +8,9 @@ class InicioView(TemplateView):
     template_name = "entrega/inicio.html"
 
 class IngresarDatosView(CreateView):
+    model = Autos
     template_name = "entrega/ingresar_datos.html"
+    fields = ['modelo', 'matricula']
 
 class BuscarDatosView(TemplateView):
     template_name = "entrega/buscar_datos.html"
